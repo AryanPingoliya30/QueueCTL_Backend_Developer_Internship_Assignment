@@ -27,8 +27,19 @@ CLI-based background job queue with persistent storage, retry/backoff handling, 
   ```
 - Or enqueue via raw JSON / file:
   ```powershell
-  queuectl enqueue '{"id":"hello","command":"echo \"Hello Queue\""}'
-  queuectl enqueue --file job.json
+  '{"id":"job-004","command":"cmd /c echo Hello"}' | queuectl enqueue
+  ```
+- Or enqueue via raw JSON / file:
+- Create job.json in main directory 
+  ```powershell
+      Set-Content job.json '{
+      "id": "job-005",
+      "command": "cmd /c echo Hello from file"
+    }'
+  ```
+- Enqueue
+  ```powershell
+      queuectl enqueue --file job.json
   ```
 - Start three detached workers:
   ```powershell
@@ -54,6 +65,24 @@ CLI-based background job queue with persistent storage, retry/backoff handling, 
   queuectl config set max_retries 5
   queuectl config set backoff_base 3
   ```
+- Testing Commands (All In One):
+  ```powershell
+  queuectl version
+  queuectl enqueue --id job-001 --command "cmd /c echo Hello Queue"
+  queuectl enqueue --id job-002 --command "cmd /c exit 1" --max-retries 3
+  queuectl enqueue --id job-003 --command "cmd /c echo High Priority" --priority 10
+  queuectl list
+  queuectl list --state pending
+  queuectl status
+  queuectl worker start
+  queuectl worker start --count 2
+  queuectl worker stop
+  queuectl worker stop --timeout 5
+  queuectl dlq list
+  queuectl dlq retry <job_id>
+  queuectl config list
+  queuectl config get retry_delay
+  queuectl config set retry_delay 5
 
 > 📹 **Demo:** Record a short CLI walkthrough (screen capture) and place the shareable link here: `<ADD_LINK>`
 
@@ -105,4 +134,5 @@ CLI-based background job queue with persistent storage, retry/backoff handling, 
 ---
 
 Questions or feedback? Open an issue or reach out — happy to iterate! :)
+
 
