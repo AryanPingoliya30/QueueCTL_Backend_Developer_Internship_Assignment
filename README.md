@@ -88,7 +88,7 @@ CLI-based background job queue with persistent storage, retry/backoff handling, 
   queuectl config get retry_delay
   queuectl config set retry_delay 5
 
-> 📹 **Demo:** Record a short CLI walkthrough (screen capture) and place the shareable link here: `<ADD_LINK>`
+> 📹 **Demo:** A short CLI walkthrough `<ADD_LINK>`
 
 ## 3. Architecture Overview
 
@@ -131,6 +131,7 @@ CLI-based background job queue with persistent storage, retry/backoff handling, 
 ---
 
 Questions or feedback? Open an issue or reach out — happy to iterate! :)
+
 
 
 
