@@ -65,6 +65,10 @@ CLI-based background job queue with persistent storage, retry/backoff handling, 
   queuectl config set max_retries 5
   queuectl config set backoff_base 3
   ```
+- delete all jobs
+  ```powershell
+    Remove-Item .\queuectl.db
+  ```
 - Testing Commands (All In One):
   ```powershell
   queuectl version
@@ -123,16 +127,10 @@ CLI-based background job queue with persistent storage, retry/backoff handling, 
   - `queuectl worker start --foreground` to observe logs in the foreground
   - `queuectl dlq list` / `retry`
 
-## 6. Next Steps / Bonus Ideas
-
-- Job priorities beyond FIFO (e.g., weighted priority queues)
-- Scheduled jobs with `run_at`
-- Job-level timeouts and retry overrides
-- Persisting stdout/stderr artifacts to files or blob storage
-- Metrics endpoint or lightweight web dashboard
 
 ---
 
 Questions or feedback? Open an issue or reach out — happy to iterate! :)
+
 
 
